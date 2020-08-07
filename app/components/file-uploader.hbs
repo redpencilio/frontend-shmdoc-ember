@@ -1,0 +1,14 @@
+<div class="FU-container">
+    <div>
+        <input name="file" id="file" type="file" class="inputfile"/>
+        <label for="file">Choose a file</label>
+    </div><br>
+
+    {{#if this.addingSource}}
+        <input class="FU-input" placeholder="new source"/>
+        <input class="FU-input" placeholder="note"/>
+        <button class="FU-button" type="button" {{on "click" this.toggleAddingSrc}}>cancel</button>
+    {{else}}
+        <button class="FU-button" type="button" {{on "click" this.toggleAddingSrc}}> {{#if this.addingSource}}Create source{{else}}Create new source{{/if}}</button>
+    {{/if}} 
+</div>
