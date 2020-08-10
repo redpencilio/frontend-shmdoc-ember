@@ -1,7 +1,9 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class SourceModel extends Model {
-    @attr name
+    @attr name;
     @attr created
-    @attr note
+    @attr description;
+    @attr note;
+    @hasMany('job') jobs;
 }
