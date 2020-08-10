@@ -173,3 +173,49 @@ div {
     margin-right: 20px;
     font-weight: 500;
   }
+
+  /* FROM SOURCE */
+  div {
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: top;
+  }
+  button {
+    margin-left: 20px;
+  }
+  h1 {
+    font-weight: 550;
+  }
+
+  /* FROM SOURCELIST */
+  .job-card {
+    padding: 0px;
+    margin-bottom: 20px;
+    transition: all 0.2s linear;
+  
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 30%;
+  }
+  .job-card:after {
+    content: "";
+    display: block;
+    width: 75%;
+    margin: 1em auto 0;
+    border-bottom: solid black 1px;
+  }
+  .job-card:hover {
+    transform: scale(1.01);
+    box-shadow: 0 3px 12px 0 rgba(0, 0, 0, 0.2), 0 1px 12px 0 rgba(0, 0, 0, 0.2);
+  }
+  .link {
+    text-decoration: none;
+    color: black;
+  
+    display: flex;
+    justify-content: center;
+  }

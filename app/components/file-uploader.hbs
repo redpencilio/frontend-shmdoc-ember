@@ -5,10 +5,11 @@
     </div><br>
 
     {{#if this.addingSource}}
-        <input class="FU-input" placeholder="new source"/>
-        <input class="FU-input" placeholder="note"/>
-        <button class="FU-button" type="button" {{on "click" this.toggleAddingSrc}}>cancel</button>
+        <Input @value={{this.newSource}} class="FU-input" placeholder="new source"/>
+        <Input @value={{this.newSourceNote}} class="FU-input" placeholder="note"/>
+        <button class="FU-button" type="button" {{on "click" this.addSource}}> Create source</button>
+        <button class="FU-button" type="button" {{on "click" this.cancelAddSource}}>cancel</button>
     {{else}}
-        <button class="FU-button" type="button" {{on "click" this.toggleAddingSrc}}> {{#if this.addingSource}}Create source{{else}}Create new source{{/if}}</button>
+        <button class="FU-button" type="button" {{on "click" this.addSource}}> Create new source</button>
     {{/if}} 
 </div>

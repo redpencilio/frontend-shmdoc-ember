@@ -9,5 +9,7 @@ export default class Router extends EmberRouter {
 Router.map(function() {
   this.route('new-job');
   this.route('running-jobs');
-  this.route('sources');
+  this.route('sources', function() {
+    this.route('show', { path: '/:source_id' });
+  });
 });

@@ -1,9 +1,9 @@
-  <div>
-    {{}}
-      <router-link :to="{ name: 'source', params: {id: source.id} }" class="link">
-        <div class='job-card'>
-          <span>{{source.attributes.name}}</span>
-        </div>
-      </router-link>
-    </div>
-  </div>
+<div>
+  {{#each @sources as |source|}}
+    <LinkTo @route="sources.show" @model={{source}} class="link">
+      <div class='job-card'>
+        <span>{{source.name}}</span>
+      </div>
+    </LinkTo>
+  {{/each}}
+</div>
