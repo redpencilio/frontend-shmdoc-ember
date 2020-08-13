@@ -10,6 +10,11 @@ Router.map(function() {
   this.route('new-job');
   this.route('running-jobs');
   this.route('sources', function() {
-    this.route('show', { path: '/:source_id' });
+    this.route('show', { path: '/:source_id' }, function() {
+      this.route('jobs', function() {
+        this.route('show');
+      });
+    });
   });
+  this.route('job', { path: '/:job_id' });
 });

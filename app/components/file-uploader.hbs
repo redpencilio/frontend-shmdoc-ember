@@ -1,15 +1,15 @@
-<div class="FU-container">
-    <div>
-        <input name="file" id="file" type="file" class="inputfile"/>
-        <label for="file">Choose a file</label>
-    </div><br>
+{{!-- This component always gets the right source as parameter --}}
 
-    {{#if this.addingSource}}
-        <Input @value={{this.newSource}} class="FU-input" placeholder="new source"/>
-        <Input @value={{this.newSourceNote}} class="FU-input" placeholder="note"/>
-        <button class="FU-button" type="button" {{on "click" this.addSource}}> Create source</button>
-        <button class="FU-button" type="button" {{on "click" this.cancelAddSource}}>cancel</button>
-    {{else}}
-        <button class="FU-button" type="button" {{on "click" this.addSource}}> Create new source</button>
-    {{/if}} 
+<div class="file-uploader">
+    {{!-- <label class="md-button md-raised"><input type="file" onchange={{action "handleFileChange"}}/>Choose a file</label> --}}
+     <FileUpload
+          @name="files"
+          @multiple={{true}}
+          @onfileadd={{action this.handleFileChange}}>
+          <span class="md-button md-raised">Choose file</span>
+        </FileUpload>
+    <PaperButton @disabled={{this.filesEmpty}} @raised={{true}} {{on "click" (fn this.uploadFiles @sourceId)}}>Upload</PaperButton>
+    <PaperChips @content={{this.files}} @removeItem={{action "removeFile"}} as |file|>
+        {{file.name}}
+    </PaperChips>
 </div>

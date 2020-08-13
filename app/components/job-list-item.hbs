@@ -1,0 +1,11 @@
+<LinkTo @route='job' class="link">
+    <div class='job-card'>
+        <span>{{if this.name @model.name @model.id}}</span>
+        <br/>
+        <span>{{@model.created}}</span>
+        {{#if this.running}}
+            <br/>
+            <span>{{@model.runningText}}</span>
+        {{/if}}
+    </div>
+</LinkTo>

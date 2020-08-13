@@ -3,15 +3,13 @@ import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class SourcesShowController extends Controller { 
-    @tracked source = null;
+    @tracked addingAnalysis = false;
 
-    @action
-    souceIsNull() {
-        return source == null;
+    @action showJob(job) {
+        this.transitionToRoute("sources.show.jobs.show", job.id)
     }
 
-    @action
-    addAnalysis() {
-        
+    @action toggleAddAnalysis() {
+        this.addingAnalysis = !this.addingAnalysis;
     }
 }

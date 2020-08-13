@@ -1,0 +1,110 @@
+$primary: (
+    '50' : #e3edf0,
+    '100' : #b8d1da,
+    '200' : #89b3c2,
+    '300' : #5994a9,
+    '400' : #367d96,
+    '500' : #126684,
+    '600' : #105e7c,
+    '700' : #0d5371,
+    '800' : #0a4967,
+    '900' : #053854,
+    'A100' : #87cdff,
+    'A200' : #54b7ff,
+    'A400' : #21a2ff,
+    'A700' : #0897ff,
+    'contrastDefaultColor': #ffffff,
+    'contrastLightColors': ('500', '600', '700', '800', '900'),
+    'contrastStrongLightColors': ('500', '600', '700')
+) !default;
+
+$accent: (
+    '50' : #fff9ef,
+    '100' : #fff0d6,
+    '200' : #ffe6bb,
+    '300' : #ffdca0,
+    '400' : #ffd58b,
+    '500' : #ffcd77,
+    '600' : #ffc86f,
+    '700' : #ffc164,
+    '800' : #ffba5a,
+    '900' : #ffae47,
+    'A100' : #ffffff,
+    'A200' : #ffffff,
+    'A400' : #fff7ee,
+    'A700' : #ffecd4,
+    'contrastDefaultColor': #000000,
+    'contrastLightColors': ('500', '600'),
+    'contrastStrongLightColors': ('700', '800', '900')
+) !default;
+
+@import 'ember-paper';
+@import 'ember-paper-data-table';
+
+.wrapper {
+    margin: 2.5em;
+}
+
+#big-card-title {
+    font-size: 35px;
+}
+
+#navbar {
+    background-color: paper-color($primary, '500') ;
+    align-items: center;
+
+    #homelink {
+        padding: 20px;
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 40px;
+    }
+}
+
+.paper-card {
+    padding: 20px;
+
+    .headline {
+        font-size: 35px;
+    }
+
+    .subhead {
+        color: rgba(0,0,0,.54);
+    }
+
+    h1 {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
+    p {
+        font-size: 15px;
+    }
+
+    .analysis-header {
+        display: inline-flex;
+        width: 100%;
+
+        h1 {
+            width: 50%;
+        }
+
+        .md-button {
+            position: absolute;
+            right: 0;
+            margin-right: 40px;
+        }
+
+    }
+}
+
+.file-uploader {
+    input {
+        display: none;
+    }
+}
+
+.add-source {
+    margin-top: 20px;
+}

@@ -1,0 +1,9 @@
+<div class="add-source">
+    {{#if this.addingSource}}
+        <PaperInput @class="flex-30" @label="Name" @placeholder="Enter name" @value={{this.sourceName}} @onChange={{action (mut this.sourceName)}}/>
+        <PaperButton @raised={{true}} {{on "click" this.addSource}}>Confirm</PaperButton>
+        <PaperButton @raised={{true}} {{on "click" this.toggleAddSource}}>Cancel</PaperButton>
+    {{else}}
+        <PaperButton @raised={{true}} {{on "click" this.toggleAddSource}}>Add source</PaperButton>
+    {{/if}}
+</div>
