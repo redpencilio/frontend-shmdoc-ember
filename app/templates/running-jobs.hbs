@@ -1,5 +1,27 @@
-<Navbar/>
-<div>
-    <h1 class="pagetitle">RUNNING ANALYSES</h1>
-    <Running-jobs-list/>
-</div>
+<PaperCard class="paper-card" as |card|>
+    <card.title as |title|>
+        <title.text as |text|>
+            <text.headline id="big-card-title">Runnig jobs</text.headline>
+        </title.text>
+    </card.title>
+    <DataTable
+    @content={{this.model}}
+    @fields="name description created"
+    @onClickRow={{this.showSource}}/>
+</PaperCard>
+
+<PaperCard class="paper-card" as |card|>
+    <card.title as |title|>
+        <title.text as |text|>
+            <text.headline id="big-card-title">Finished jobs</text.headline>
+        </title.text>
+    </card.title>
+    <DataTable
+    @content={{this.model}}
+    @fields="name description created"
+    @filter={{this.filter}}
+    @sort={{this.sort}}
+    @page={{this.page}}
+    @size={{this.size}}
+    @onClickRow={{this.showSource}}/>
+</PaperCard>

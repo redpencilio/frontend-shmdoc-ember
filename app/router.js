@@ -12,9 +12,8 @@ Router.map(function() {
   this.route('sources', function() {
     this.route('show', { path: '/:source_id' }, function() {
       this.route('jobs', function() {
-        this.route('show');
+        this.route('show', { path: '/:job_id' });
       });
     });
   });
-  this.route('job', { path: '/:job_id' });
 });

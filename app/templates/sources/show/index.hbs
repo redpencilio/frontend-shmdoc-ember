@@ -1,6 +1,6 @@
 <DataTable
 @content={{this.model}}
-@fields="id created"
+@fields="id file.filename created columns.links.related.length source.id"
 @filter={{this.filter}}
 @sort={{this.sort}}
 @onClickRow={{this.showJob}}/>

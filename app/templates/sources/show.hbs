@@ -1,23 +1,46 @@
 <PaperCard class="paper-card" as |card|>
       <card.title as |title|>
             <title.text as |text|>
-                  <text.headline class="headline">{{@model.name}}</text.headline>
-                  <text.subhead class="subhead">{{moment-format @model.created 'LLL'}}</text.subhead>
+                  <text.headline class="headline">
+                        {{#if this.edittingSource}}
+                              <PaperInput @placeholder="Edit name" @textarea={{true}} @value={{this.sourceName}} @onChange={{action (mut this.sourceName)}} />
+                        {{else}}
+                               <text.headline class="headline">{{this.sourceName}}</text.headline>
+                        {{/if}}
+                  </text.headline>
+                  <text.subhead class="subhead">Source, {{moment-format @model.created 'LLL'}}</text.subhead>
             </title.text>
+            {{#if this.edittingSource}}
+                  <PaperButton @raised={{true}} @mini={{true}} {{on "click" this.confirmEdit}}>{{paper-icon "check"}}</PaperButton>
+                  <PaperButton @raised={{true}} @mini={{true}} {{on "click" this.cancelEdit}}>{{paper-icon "close"}}</PaperButton>
+            {{else}}
+                  <PaperButton @raised={{true}} @mini={{true}} {{on "click" this.toggleEditSource}}>{{paper-icon "create"}}</PaperButton>
+            {{/if}}
       </card.title>
       <card.content>
             <br/>
             <h1>Description</h1>
-            <p>{{@model.description}}</p>
+            {{#if this.edittingSource}}
+                  <PaperInput @placeholder="Edit description" @textarea={{true}} @block={{true}} @passThru={{hash rows=5 maxRows=5}} @value={{this.sourceDescription}} @onChange={{action (mut this.sourceDescription)}} />
+            {{else}}
+                  <p>{{this.sourceDescription}}</p>
+            {{/if}}
             <br/>
             <h1>Notes</h1>
-            <p>{{@model.notes}}</p>
+            {{#if this.edittingSource}}
+                  <PaperInput @placeholder="Edit note" @textarea={{true}} @block={{true}} @passThru={{hash rows=5 maxRows=5}} @value={{this.sourceNote}} @onChange={{action (mut this.sourceNote)}} />
+            {{else}}
+                  <p>{{this.sourceNote}}</p>  
+            {{/if}}
+            
             <br/>
-            <div class="analysis-header">
-                  <h1>Analysis</h1>
-                  <PaperButton @raised={{true}} {{on "click" this.toggleAddAnalysis}}>{{#if this.addingAnalysis}}Cancel{{else}}Add analysis{{/if}}</PaperButton>
-            </div>
-            {{#if this.addingAnalysis}}<FileUploader @sourceId={{@model.id}}/>{{/if}}
+
+            <h1>Analysis</h1>     
             {{outlet}}
+
+            <PaperDivider class="divider"/>
+
+            <PaperButton @raised={{true}} {{on "click" this.toggleAddAnalysis}}>{{#if this.addingAnalysis}}Cancel{{else}}Add analysis{{/if}}</PaperButton>
+            {{#if this.addingAnalysis}}<FileUploader @sourceId={{@model.id}}/>{{/if}}
       </card.content>
 </PaperCard>
