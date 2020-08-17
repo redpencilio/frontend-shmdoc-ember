@@ -16,6 +16,6 @@ export default class ColumnModel extends Model {
     @attr mean;
     @attr median;
     @attr commonValues;
-    @belongsTo('job') job;
+    @belongsTo('schema-analysis-job') job;
     @belongsTo('unit') unit;
 }

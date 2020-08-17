@@ -29,15 +29,16 @@ export default class FileUploaderComponent extends Component {
         let d = new Date() 
         let timestamp = d.toISOString()
         const source = this.store.peekRecord( 'source', sourceId);
-        
         for (const file of this.files) {
             const result = await file.upload("/files");
             this.store.pushPayload('file', result.body);
             const uploadedFile = this.store.peekRecord( 'file', result.body.data.id );
-            await this.store.createRecord('schema-analysis-job', {
+
+            const resultJob = await this.store.createRecord('schema-analysis-job', {
                 source: source,
                 file: uploadedFile,
-                created: timestamp}).save()
+                created: timestamp}).save();
+            await fetch(`/schema-analysis-jobs/${resultJob.id}/run`, {method:"POST"});
         }
         source.save();
         this.files = [];

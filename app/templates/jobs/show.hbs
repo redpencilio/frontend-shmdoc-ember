@@ -1,0 +1,11 @@
+<PaperCard class="paper-card" as |card|>
+    <card.title as |title|>
+        <title.text as |text|>
+            <text.headline class="headline">Analysis for: {{@model.file.filename}}</text.headline>
+            <text.subhead class="subhead">From {{@model.source.name}} (source), {{moment-format @model.created 'LLL'}}</text.subhead>
+        </title.text>
+    </card.title>
+
+    {{outlet}}
+
+</PaperCard>
