@@ -14,6 +14,8 @@ Router.map(function() {
   });
 
   this.route('jobs', function() {
-    this.route('show', { path: '/:schema-analysis-job_id' });
+    this.route('show', { path: '/:schema-analysis-job_id' }, function() {
+      
+    });
   });
 });

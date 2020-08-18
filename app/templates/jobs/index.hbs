@@ -9,18 +9,17 @@
             <content.header>
                 <ThSortable @field="file.filename" @currentSorting={{this.sort}} @label='Filename'/>
                 <ThSortable @field="created" @currentSorting={{this.sort}} @label='Date created'/>
-                <ThSortable @field="finalized" @currentSorting={{this.sort}} @label='zefzf'/>
+                <ThSortable @field="finalized" @currentSorting={{this.sort}} @label='Finished'/>
             </content.header>
             <content.body as |row|> 
                 <td>{{row.file.filename}}</td>
                 <td>{{row.created}}</td>
                 <td>
-                    {{!-- {{#if (fn isFinished row.columns.links.related.length)}}
+                    {{#if row.finalized}}
                         true
                     {{else}}
                         false
-                    {{/if}} --}}
-                    {{row.finalized}}
+                    {{/if}}
                 </td>
             </content.body>
         </table.content>
