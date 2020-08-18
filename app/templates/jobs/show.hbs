@@ -9,6 +9,11 @@
         <PaperSelect @placeholder="Column" @selected={{selectedColumn}} @options={{@model.columns}} @searchField="name" @searchPlaceholder="Search for a column.." @searchEnabled={{true}} @onChange={{action (mut selectedColumn)}} as |column|>
             {{column.name}}
         </PaperSelect>
+
+        {{#if this.selectedColumn }}
+            <ColumnCard @column={{this.selectedColumn}}/>
+        {{/if}}
+        
     </card.content>
 </PaperCard>
 

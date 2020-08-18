@@ -1,0 +1,71 @@
+<PaperCard class="paper-card" as |card|>
+    <card.title as |title|>
+        <title.text as |text|>
+            <text.headline class="sub-headline">Data of: {{@column.name}}</text.headline>
+        </title.text>
+    </card.title>
+    <card.content>
+        <table class="column-table">
+            <tr>
+                <th>Description</th>
+                <td>{{@column.description}}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{@column.note}}</td>
+            </tr>
+            <tr>
+                <th>Datatype</th>
+                <td>{{@column.dataType}}</td>
+            </tr>
+            <tr>
+                <th>Quantity count</th>
+                <td>{{@column.quantityCount}}</td>
+            </tr>
+            <tr>
+                <th>Unit</th>
+                <td>{{@column.unit}}</td>
+            </tr>
+            <tr>
+                <th>Record count</th>
+                <td>{{@column.recordCount}}</td>
+            </tr>
+            <tr>
+                <th>Missing count</th>
+                <td>{{@column.missingCount}}</td>
+            </tr>
+            <tr>
+                <th>Minimum</th>
+                <td>{{@column.min}}</td>
+            </tr>
+            <tr>
+                <th>Maximum</th>
+                <td>{{@column.max}}</td>
+            </tr>
+            <tr>
+                <th>Mean</th>
+                <td>{{@column.mean}}</td>
+            </tr>
+            <tr>
+                <th>Median</th>
+                <td>{{@column.median}}</td>
+            </tr>
+            <tr>
+                <th>Common values (max. 5)</th>
+                <td>
+                    <table>
+                        <tr><th>Element</th><th>Value</th></tr>
+                        {{#each (json-parser @column.commonValues) as |row|}}
+                            <tr><td>{{row.element}}</td><td>{{row.occurrences}}</td></tr>
+                        {{/each}}
+
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th>Disable processing</th>
+                <td>{{@column.disableProcessing}}</td>
+            </tr>
+        </table>
+    </card.content>
+</PaperCard>
