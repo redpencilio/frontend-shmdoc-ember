@@ -125,11 +125,20 @@ $accent: (
         background-color: #12668425;
         padding-left: 20px;
     }
+
 }
 
 md-input-container.md-input-has-value{
     bottom: 0;
     top: 0;
+}
+
+md-select-menu.md-default-theme.md-overflow {
+    background-color: white;
+}
+
+input.ember-power-select-search-input {
+    min-height: 40px;
 }
 
 

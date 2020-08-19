@@ -27,7 +27,7 @@
                 <th>Note</th>
                 <td>
                     {{#if this.edittingColumn}}
-                        <PaperInput @placeholder="Edit description" @textarea={{true}} @block={{true}} @passThru={{hash rows=2 maxRows=5}} @value={{this.columnNote}} @onChange={{action (mut this.columnNote)}} />
+                        <PaperInput @placeholder="Edit note" @textarea={{true}} @block={{true}} @passThru={{hash rows=2 maxRows=5}} @value={{this.columnNote}} @onChange={{action (mut this.columnNote)}} />
                     {{else}}
                         {{@column.note}}
                     {{/if}}
@@ -37,7 +37,7 @@
                 <th>Datatype</th>
                 <td>
                     {{#if this.edittingColumn}}
-                        <PaperInput @placeholder="Edit description" @textarea={{true}} @value={{this.columnDataType}} @onChange={{action (mut this.columnDataType)}} />
+                        <PaperInput @placeholder="Edit datatype" @textarea={{true}} @value={{this.columnDataType}} @onChange={{action (mut this.columnDataType)}} />
                     {{else}}
                         {{@column.dataType}}
                     {{/if}}
@@ -47,7 +47,7 @@
                 <th>Quantity kind</th>
                 <td>
                     {{#if this.edittingColumn}}
-                        <PaperInput @placeholder="Edit description" @textarea={{true}} @value={{this.columnQuantityKind}} @onChange={{action (mut this.columnQuantityKind)}} />
+                        <PaperInput @placeholder="Edit quantity kind" @textarea={{true}} @value={{this.columnQuantityKind}} @onChange={{action (mut this.columnQuantityKind)}} />
                     {{else}}
                         {{@column.quantityKind}}
                     {{/if}}
@@ -57,7 +57,9 @@
                 <th>Unit</th>
                 <td>
                     {{#if this.edittingColumn}}
-                        <PaperInput @placeholder="Edit description" @textarea={{true}} @value={{this.columnUnitName}} @onChange={{action (mut this.columnUnitName)}} />
+                        <PaperSelect @placeholder="Unit" @selected={{this.columnUnit}} @options={{@units}} @searchField="name" @searchPlaceholder="Search for a unit.." @searchEnabled={{true}} @onChange={{action (mut this.columnUnit)}} as |unit|>
+                            {{unit.name}}
+                        </PaperSelect>
                     {{else}}
                         {{@column.unit.name}}
                     {{/if}}
@@ -103,9 +105,9 @@
                 <th>Disable processing</th>
                 <td>
                     {{#if this.edittingColumn}}
-                        <PaperCheckbox @value={{this.columnDisableProcessing}} @onChange={{action (mut columnDisableProcessing)}}/>
+                        <PaperSwitch @value={{this.columnDisableProcessing}} @onChange={{action (mut columnDisableProcessing)}}/>
                     {{else}}
-                        <PaperCheckbox @value={{@column.disableProcessing}} @onChange={{null}} @disabled={{true}}/>
+                        {{@column.disableProcessing}}
                     {{/if}}
                 </td>
             </tr>

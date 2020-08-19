@@ -1,18 +1,18 @@
 <PaperCard class="paper-card" as |card|>
     <card.title as |title|>
         <title.text as |text|>
-            <text.headline class="headline">Analysis for: {{@model.file.filename}}</text.headline>
-            <text.subhead class="subhead">From {{@model.source.name}} (source), {{moment-format @model.created 'LLL'}}</text.subhead>
+            <text.headline class="headline">Analysis for: {{@model.job.file.filename}}</text.headline>
+            <text.subhead class="subhead">From {{@model.job.source.name}} (source), {{moment-format @model.job.created 'LLL'}}</text.subhead>
         </title.text>
 
     </card.title>
     <card.content>
-        <PaperSelect @placeholder="Column" @selected={{selectedColumn}} @options={{@model.columns}} @searchField="name" @searchPlaceholder="Search for a column.." @searchEnabled={{true}} @onChange={{action (mut selectedColumn)}} as |column|>
+        <PaperSelect @placeholder="Column" @selected={{this.selectedColumn}} @options={{@model.job.columns}} @searchField="name" @searchPlaceholder="Search for a column.." @searchEnabled={{true}} @onChange={{action (mut selectedColumn)}} as |column|>
             {{column.name}}
         </PaperSelect>
 
         {{#if this.selectedColumn }}
-            <ColumnCard @column={{this.selectedColumn}}/>
+            <ColumnCard @column={{this.selectedColumn}} @units={{@model.units}}/>
         {{/if}}
         
     </card.content>
