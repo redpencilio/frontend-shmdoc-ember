@@ -30,7 +30,7 @@ export default class SourcesShowController extends Controller {
     }
 
     @action async confirmEdit() {
-        const source = await this.store.findRecord('source', this.get('model').id)
+        const source = await this.store.findRecord('source', this.get('model').id);
         source.name = this.sourceName;
         source.description = this.sourceDescription;
         source.note = this.sourceNote;

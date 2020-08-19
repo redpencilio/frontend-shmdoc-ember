@@ -4,6 +4,7 @@
             <text.headline class="headline">Analysis for: {{@model.file.filename}}</text.headline>
             <text.subhead class="subhead">From {{@model.source.name}} (source), {{moment-format @model.created 'LLL'}}</text.subhead>
         </title.text>
+
     </card.title>
     <card.content>
         <PaperSelect @placeholder="Column" @selected={{selectedColumn}} @options={{@model.columns}} @searchField="name" @searchPlaceholder="Search for a column.." @searchEnabled={{true}} @onChange={{action (mut selectedColumn)}} as |column|>

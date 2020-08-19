@@ -4,6 +4,6 @@ export default class SchemaAnalysisJobModel extends Model {
     @attr created;
     @belongsTo('source') source;
     @belongsTo('file') file;
-    @hasMany('column') columns
+    @hasMany('column') columns;
     @attr finalized;
 }

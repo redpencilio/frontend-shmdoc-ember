@@ -1,30 +1,67 @@
+
 <PaperCard class="paper-card" as |card|>
     <card.title as |title|>
         <title.text as |text|>
             <text.headline class="sub-headline">Data of: {{@column.name}}</text.headline>
         </title.text>
+        {{#if this.edittingColumn}}
+            <PaperButton @raised={{true}} @mini={{true}} {{on "click" this.confirmEdit}}>{{paper-icon "check"}}</PaperButton>
+            <PaperButton @raised={{true}} @mini={{true}} {{on "click" this.cancelEdit}}>{{paper-icon "close"}}</PaperButton>
+        {{else}}
+            <PaperButton @raised={{true}} @mini={{true}} {{on "click" (fn this.editColumn @column)}}>{{paper-icon "create"}}</PaperButton>
+        {{/if}}
     </card.title>
     <card.content>
         <table class="column-table">
             <tr>
                 <th>Description</th>
-                <td>{{@column.description}}</td>
+                <td>
+                    {{#if this.edittingColumn}}
+                        <PaperInput @placeholder="Edit description" @textarea={{true}} @block={{true}} @passThru={{hash rows=2 maxRows=5}} @value={{this.columnDescription}} @onChange={{action (mut this.columnDescription)}} />
+                    {{else}}
+                        {{@column.description}}
+                    {{/if}}
+                </td>
             </tr>
             <tr>
                 <th>Note</th>
-                <td>{{@column.note}}</td>
+                <td>
+                    {{#if this.edittingColumn}}
+                        <PaperInput @placeholder="Edit description" @textarea={{true}} @block={{true}} @passThru={{hash rows=2 maxRows=5}} @value={{this.columnNote}} @onChange={{action (mut this.columnNote)}} />
+                    {{else}}
+                        {{@column.note}}
+                    {{/if}}
+                </td>
             </tr>
             <tr>
                 <th>Datatype</th>
-                <td>{{@column.dataType}}</td>
+                <td>
+                    {{#if this.edittingColumn}}
+                        <PaperInput @placeholder="Edit description" @textarea={{true}} @value={{this.columnDataType}} @onChange={{action (mut this.columnDataType)}} />
+                    {{else}}
+                        {{@column.dataType}}
+                    {{/if}}
+                </td>
             </tr>
             <tr>
-                <th>Quantity count</th>
-                <td>{{@column.quantityCount}}</td>
+                <th>Quantity kind</th>
+                <td>
+                    {{#if this.edittingColumn}}
+                        <PaperInput @placeholder="Edit description" @textarea={{true}} @value={{this.columnQuantityKind}} @onChange={{action (mut this.columnQuantityKind)}} />
+                    {{else}}
+                        {{@column.quantityKind}}
+                    {{/if}}
+                </td>
             </tr>
             <tr>
                 <th>Unit</th>
-                <td>{{@column.unit}}</td>
+                <td>
+                    {{#if this.edittingColumn}}
+                        <PaperInput @placeholder="Edit description" @textarea={{true}} @value={{this.columnUnitName}} @onChange={{action (mut this.columnUnitName)}} />
+                    {{else}}
+                        {{@column.unit.name}}
+                    {{/if}}
+                </td>
             </tr>
             <tr>
                 <th>Record count</th>
@@ -64,7 +101,13 @@
             </tr>
             <tr>
                 <th>Disable processing</th>
-                <td>{{@column.disableProcessing}}</td>
+                <td>
+                    {{#if this.edittingColumn}}
+                        <PaperCheckbox @value={{this.columnDisableProcessing}} @onChange={{action (mut columnDisableProcessing)}}/>
+                    {{else}}
+                        <PaperCheckbox @value={{@column.disableProcessing}} @onChange={{null}} @disabled={{true}}/>
+                    {{/if}}
+                </td>
             </tr>
         </table>
     </card.content>

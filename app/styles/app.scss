@@ -110,6 +110,8 @@ $accent: (
 }
 
 .column-table {
+
+    margin-top: 20px;
     
     th {
         border: 1px solid black;
@@ -123,10 +125,11 @@ $accent: (
         background-color: #12668425;
         padding-left: 20px;
     }
-    
-    .sub-headline {
-        padding-bottom: 20px;
-    }
+}
+
+md-input-container.md-input-has-value{
+    bottom: 0;
+    top: 0;
 }
 
 
