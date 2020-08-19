@@ -61,7 +61,9 @@
                             {{unit.name}}
                         </PaperSelect>
                     {{else}}
-                        {{@column.unit.name}}
+                        {{#if @column.unit}}
+                            <PaperButton class="unit-button" @raised={{true}}><LinkTo @route={{"unit"}} @model={{@column.unit}}>{{@column.unit.name}}</LinkTo></PaperButton>
+                        {{/if}}
                     {{/if}}
                 </td>
             </tr>

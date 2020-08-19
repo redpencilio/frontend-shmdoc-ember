@@ -18,4 +18,5 @@ Router.map(function() {
       
     });
   });
+  this.route('unit', { path: '/:unit_id' }, function() {});
 });

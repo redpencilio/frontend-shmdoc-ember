@@ -1,0 +1,14 @@
+<PaperCard class="paper-card" as |card|>
+    <card.title as |title|>
+        <title.text as |text|>
+            <text.headline class="headline"><a href={{@model.uri}}>{{@model.name}} ({{@model.notation}})</a></text.headline>
+            <text.subhead class="subhead">{{@model.definition}} (source), {{moment-format @model.job.created 'LLL'}}</text.subhead>
+        </title.text>
+
+    </card.title>
+    <card.content>
+
+        {{outlet}}
+        
+    </card.content>
+</PaperCard>
