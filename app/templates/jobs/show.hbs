@@ -7,11 +7,12 @@
 
     </card.title>
     <card.content>
+        {{!-- <p style="display:none;">{{this.setSelected}}</p> --}}
         <PaperSelect @placeholder="Column" @selected={{this.selectedColumn}} @options={{@model.job.columns}} @searchField="name" @searchPlaceholder="Search for a column.." @searchEnabled={{true}} @onChange={{action (mut selectedColumn)}} as |column|>
             {{column.name}}
         </PaperSelect>
 
-        {{#if this.selectedColumn }}
+        {{#if this.selectedColumn}}
             <ColumnCard @column={{this.selectedColumn}} @units={{@model.units}}/>
         {{/if}}
         

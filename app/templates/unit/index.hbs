@@ -1,8 +1,8 @@
 <DataTable
     @content={{this.model}}
-    @fields="name description created"
+    @fields="job.source.name name job.finalized"
     @filter={{this.filter}}
     @sort={{this.sort}}
     @page={{this.page}}
     @size={{this.size}}
-    @onClickRow={{this.showSource}}/>
+    @onClickRow={{this.showColumn}}/>

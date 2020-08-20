@@ -11,4 +11,8 @@ export default class JobsShowRoute extends Route {
             units: this.store.findAll('unit')
           });
     }
+
+    afterModel(model, transition) {
+        this.controllerFor('jobs.show').setSelected();
+    }
 }
