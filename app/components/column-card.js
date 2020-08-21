@@ -52,5 +52,7 @@ export default class ColumnCardComponent extends Component {
         column.save();
         this.toggleEditColumn();
     }
+
+    
 }
 

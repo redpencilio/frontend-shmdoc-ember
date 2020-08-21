@@ -13,12 +13,12 @@
             </content.header>
             <content.body as |row|> 
                 <td>{{row.file.filename}}</td>
-                <td>{{row.created}}</td>
+                <td>{{moment-format row.created 'LLL'}}</td>
                 <td>
                     {{#if row.finalized}}
-                        true
+                        <span style="color: green;">{{moment-format row.finalized 'LLL'}}</span>
                     {{else}}
-                        false
+                        <span style="color: red;">not finished</span>
                     {{/if}}
                 </td>
             </content.body>

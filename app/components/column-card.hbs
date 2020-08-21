@@ -97,7 +97,7 @@
                     <table>
                         <tr><th>Element</th><th>Value</th></tr>
                         {{#each (json-parser @column.commonValues) as |row|}}
-                            <tr><td>{{row.element}}</td><td>{{row.occurrences}}</td></tr>
+                            <tr><td>{{row.element}}</td><td>{{calc-percentage row.occurrences}}%</td></tr>
                         {{/each}}
 
                     </table>

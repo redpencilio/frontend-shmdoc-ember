@@ -4,14 +4,20 @@
             <text.headline id="big-card-title">Sources</text.headline>
         </title.text>
     </card.title>
-    <DataTable
-    @content={{this.model}}
-    @fields="name description created"
-    @filter={{this.filter}}
-    @sort={{this.sort}}
-    @page={{this.page}}
-    @size={{this.size}}
-    @onClickRow={{this.showSource}}/>
+    <DataTable @content={{this.model}} @filter={{this.filter}} @sort={{this.sort}} @page={{this.page}} @size={{this.size}} @onClickRow={{this.showSource}} as |table|>
+        <table.content as |content|>
+            <content.header>
+                <ThSortable @field="name" @currentSorting={{this.sort}} @label='Filename'/>
+                <th>Description</th>
+                <ThSortable @field="created" @currentSorting={{this.sort}} @label='Created'/>
+            </content.header>
+            <content.body as |row|> 
+                <td>{{row.name}}</td>
+                <td>{{row.description}}</td>
+                <td>{{moment-format row.created 'LLL'}}</td>
+            </content.body>
+        </table.content>
+    </DataTable>
 
     <PaperDivider class="divider"/>
 

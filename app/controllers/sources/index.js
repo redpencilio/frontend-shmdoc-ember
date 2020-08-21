@@ -4,7 +4,7 @@ import { action } from '@ember/object';
 
 
 export default class SourcesIndexController extends Controller.extend(DefaultQueryParamsMixin) {
-    size = 5;
+    size = 10;
 
     @action showSource(source) {
         this.transitionToRoute("sources.show", source.id);

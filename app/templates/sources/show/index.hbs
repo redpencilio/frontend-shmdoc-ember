@@ -1,6 +1,22 @@
-<DataTable
-@content={{this.model}}
-@fields="id file.filename finalized created"
-@filter={{this.filter}}
-@sort={{this.sort}}
-@onClickRow={{this.showJob}}/>
+<DataTable @content={{this.model}} @filter={{this.filter}} @sort={{this.sort}} @page={{this.page}} @size={{this.size}} @onClickRow={{this.showJob}} as |table|>
+        <table.content as |content|>
+            <content.header>
+                <th>Analysis id</th>
+                <ThSortable @field="file.filename" @currentSorting={{this.sort}} @label='Filename'/>
+                <ThSortable @field="created" @currentSorting={{this.sort}} @label='Created'/>
+                <ThSortable @field="finalized" @currentSorting={{this.sort}} @label='Analysis finished'/>
+            </content.header>
+            <content.body as |row|> 
+                <td>{{row.id}}</td>
+                <td>{{row.file.filename}}</td>
+                <td>{{moment-format row.created 'LLL'}}</td>
+                <td>
+                    {{#if row.finalized}}
+                        <span style="color: green;">{{moment-format row.finalized 'LLL'}}</span>
+                    {{else}}
+                        <span style="color: red;">not finished</span>
+                    {{/if}}
+                </td>
+            </content.body>
+        </table.content>
+    </DataTable>
