@@ -7,6 +7,10 @@ export default class JobsShowController extends Controller {
     @tracked selectedColumn;
     columnId;
 
+    @action selectColumn(column) {
+        this.selectedColumn = column;
+    }
+
     @action setSelected() {
         if (this.columnId) {
             this.selectedColumn = this.get('model').columns.filter(function(col) {

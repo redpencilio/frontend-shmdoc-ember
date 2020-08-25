@@ -7,10 +7,10 @@
 
     </card.title>
     <card.content>
-        {{!-- <p style="display:none;">{{this.setSelected}}</p> --}}
-        <PaperSelect @placeholder="Column" @selected={{this.selectedColumn}} @options={{@model.job.columns}} @searchField="name" @searchPlaceholder="Search for a column.." @searchEnabled={{true}} @onChange={{action (mut selectedColumn)}} as |column|>
-            {{column.name}}
-        </PaperSelect>
+
+        {{#each @model.job.columns as |column|}}
+            <PaperButton @raised={{true}} {{on "click" (fn this.selectColumn column)}} @onClick={{null}}> {{column.name}}</PaperButton>
+        {{/each}}
 
         {{#if this.selectedColumn}}
             <ColumnCard @column={{this.selectedColumn}} @units={{@model.units}}/>
