@@ -53,6 +53,8 @@ export default class ColumnCardComponent extends Component {
         this.toggleEditColumn();
     }
 
-    
+    @action async downloadHistogram() {
+        return await fetch(`/files/c2948bde-e87d-11ea-ba30-0242ac150003/download`)
+    }
 }
 

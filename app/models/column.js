@@ -18,4 +18,5 @@ export default class ColumnModel extends Model {
     @attr commonValues;
     @belongsTo('schema-analysis-job') job;
     @belongsTo('unit') unit;
+    @belongsTo('file') file;
 }
