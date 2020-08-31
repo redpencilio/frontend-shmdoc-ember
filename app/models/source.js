@@ -5,5 +5,5 @@ export default class SourceModel extends Model {
     @attr created
     @attr description;
     @attr note;
-    @hasMany('schema-analysis-job') jobs;
+    @hasMany('schema-analysis-job') analysisJobs;
 }

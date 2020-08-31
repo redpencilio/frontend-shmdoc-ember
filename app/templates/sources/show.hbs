@@ -41,6 +41,6 @@
             <PaperDivider class="divider"/>
 
             <PaperButton @raised={{true}} {{on "click" this.toggleAddAnalysis}}>{{#if this.addingAnalysis}}Cancel{{else}}Add analysis{{/if}}</PaperButton>
-            {{#if this.addingAnalysis}}<FileUploader @sourceId={{@model.id}}/>{{/if}}
+            {{#if this.addingAnalysis}}<FileUploader @sourceId={{@model.id}} @analysis={{@model.analysisJobs}}/>{{/if}}
       </card.content>
 </PaperCard>

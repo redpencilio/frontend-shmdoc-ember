@@ -8,6 +8,7 @@ export default class FileUploaderComponent extends Component {
     
     @tracked files = [];
     @tracked filesEmpty = true;
+    @tracked selectedAnalysis = null;
 
     @action 
     handleFileChange(file) {
@@ -28,13 +29,14 @@ export default class FileUploaderComponent extends Component {
     async uploadFiles(sourceId) {
         let d = new Date() 
         let timestamp = d.toISOString()
-        const source = this.store.peekRecord( 'source', sourceId);
+        let source = this.store.peekRecord( 'source', sourceId);
         for (const file of this.files) {
-            const result = await file.upload("/files");
+            let result = await file.upload("/files");
             this.store.pushPayload('file', result.body);
-            const uploadedFile = this.store.peekRecord( 'file', result.body.data.id );
+            let uploadedFile = this.store.peekRecord( 'file', result.body.data.id );
 
-            const resultJob = await this.store.createRecord('schema-analysis-job', {
+            // If an analysis is selected, the new record will take the notes, description and unit from the selected analysis.
+            let resultJob = await this.store.createRecord('schema-analysis-job', {
                 source: source,
                 file: uploadedFile,
                 created: timestamp}).save();

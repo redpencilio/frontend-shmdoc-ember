@@ -8,6 +8,10 @@
           @onfileadd={{action this.handleFileChange}}>
           <span class="md-button md-raised">Choose file</span>
         </FileUpload>
+    {{!-- <PaperSelect @placeholder="Analysis" @selected={{selectedAnalysis}} @options={{@analysis}} @searchField="Filename" @searchPlaceholder="Search for an analysis to extend from.." @searchEnabled={{true}} @onChange={{action (mut this.selectedAnalysis)}} as |analysis|>
+        {{analysis.file.filename}}
+    </PaperSelect> --}}
+
     <PaperButton @disabled={{this.filesEmpty}} @raised={{true}} {{on "click" (fn this.uploadFiles @sourceId)}}>Upload</PaperButton>
     <PaperChips @content={{this.files}} @removeItem={{action "removeFile"}} as |file|>
         {{file.name}}

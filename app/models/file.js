@@ -1,4 +1,4 @@
-import Model, { attr } from '@ember-data/model';
+import Model, { attr, belongsTo } from '@ember-data/model';
 
 export default class FileModel extends Model {
     @attr filename;
@@ -7,5 +7,4 @@ export default class FileModel extends Model {
     @attr extension;
     @attr created;
     @attr contentType;
-    @attr file; // Downloadable file
 }
