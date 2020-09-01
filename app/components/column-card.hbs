@@ -113,6 +113,20 @@
                     {{/if}}
                 </td>
             </tr>
+            {{#if @column.unit}}
+                <tr>
+                    <th>Specifc analysis for {{@column.unit.name}}</th>
+                    <td>
+                        <table>
+                            <tr><th>Name</th><th>Value</th></tr>
+                            {{#each (json-parser @column.unitSpecificInfo) as |row|}}
+                                <tr><td>{{row.name}}</td><td>{{row.value}}</td></tr>
+                            {{/each}}
+
+                        </table>
+                    </td>
+                </tr>
+            {{/if}}
         </table>
         
         <img src="/files/{{@column.file.id}}/download" alt="Histogram">

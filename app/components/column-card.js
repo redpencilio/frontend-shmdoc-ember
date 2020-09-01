@@ -43,6 +43,7 @@ export default class ColumnCardComponent extends Component {
 
     @action async confirmEdit() {
         const column = await this.store.findRecord('column', this.selectedColumn.id);       
+        let reanalyse = column.unit != this.columnUnit
         column.description = this.columnDescription;
         column.note = this.columnNote;
         column.dataType = this.columnDatatype;
@@ -51,10 +52,10 @@ export default class ColumnCardComponent extends Component {
         column.disableProcessing = this.columnDisableProcessing;
         column.save();
         this.toggleEditColumn();
-    }
 
-    @action async downloadHistogram() {
-        return await fetch(`/files/c2948bde-e87d-11ea-ba30-0242ac150003/download`)
+        if (reanalyse) {
+            await fetch(`/column/${this.selectedColumn.id}/reanalyse`, {method:"POST"});
+        }
     }
 }
 
