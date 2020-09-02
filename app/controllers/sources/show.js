@@ -75,7 +75,7 @@ export default class SourcesShowController extends Controller {
                 source: source,
                 file: uploadedFile,
                 created: timestamp}).save();
-            await fetch(`/schema-analysis-jobs/${resultJob.id}/run`, {method:"POST"});
+            fetch(`/schema-analysis-jobs/${resultJob.id}/run`, {method:"POST"});
         }
         source.save();
         this.files = [];
