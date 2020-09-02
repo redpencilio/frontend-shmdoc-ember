@@ -41,6 +41,18 @@
             <PaperDivider class="divider"/>
 
             <PaperButton @raised={{true}} {{on "click" this.toggleAddAnalysis}}>{{#if this.addingAnalysis}}Cancel{{else}}Add analysis{{/if}}</PaperButton>
-            {{#if this.addingAnalysis}}<FileUploader @sourceId={{@model.id}} @analysis={{@model.analysisJobs}}/>{{/if}}
+            {{#if this.addingAnalysis}}
+                  <FileUpload @name="files" @multiple={{true}} @onfileadd={{action this.handleFileChange}}>
+                        <span class="md-button md-raised">Choose file</span>
+                  </FileUpload>
+                  {{!-- <PaperSelect @placeholder="Analysis" @selected={{selectedAnalysis}} @options={{@model.analysisJobs}} @searchField="Filename" @searchPlaceholder="Search for an analysis to extend from.." @searchEnabled={{true}} @onChange={{action (mut this.selectedAnalysis)}} as |analysis|>
+                        {{analysis.file.filename}}
+                  </PaperSelect> --}}
+
+                  <PaperButton @disabled={{this.filesEmpty}} @raised={{true}} {{on "click" (fn this.uploadFiles @model.id)}}>Upload</PaperButton>
+                  <PaperChips @content={{this.files}} @removeItem={{action "removeFile"}} as |file|>
+                        {{file.name}}
+                  </PaperChips>
+            {{/if}}    
       </card.content>
 </PaperCard>
