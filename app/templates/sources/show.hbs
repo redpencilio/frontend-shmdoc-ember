@@ -55,4 +55,11 @@
                   </PaperChips>
             {{/if}}    
       </card.content>
+
+
+    {{#if this.showToast}}
+        <PaperToast @duration={{3000}} @onClose={{action "closeToast"}} as |toast|>
+            <toast.text>We are analysing your new file(s)</toast.text>
+        </PaperToast>
+    {{/if}}
 </PaperCard>

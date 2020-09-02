@@ -15,6 +15,8 @@ export default class SourcesShowController extends Controller {
     @tracked filesEmpty = true;
     @tracked selectedAnalysis = null;
 
+    @tracked showToast = false;
+
     @action showJob(job) {
         this.transitionToRoute("sources.show.jobs.show", job.id)
     }
@@ -74,12 +76,17 @@ export default class SourcesShowController extends Controller {
                 file: uploadedFile,
                 created: timestamp}).save();
             await fetch(`/schema-analysis-jobs/${resultJob.id}/run`, {method:"POST"});
-            //this.store.findRecord("schemaAnalysisJob", resultJob.id, {reload: true});
         }
         source.save();
         this.files = [];
         this.filesEmpty = true;
+        this.showToast = true;
+
         // Refresh the dataTable
-        var controller = getOwner(this).lookup("route:sources/show/index").refresh();
+        getOwner(this).lookup("route:sources/show/index").refresh();
+    }
+
+    @action closeToast() {
+        this.showToast = false;
     }
 }
