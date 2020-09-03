@@ -77,30 +77,33 @@
             </tr>
             <tr>
                 <th>Minimum</th>
-                <td>{{@column.min}}</td>
+                <td>{{if @column.min @column.min "No value"}}</td>
             </tr>
             <tr>
                 <th>Maximum</th>
-                <td>{{@column.max}}</td>
+                <td>{{if @column.max @column.max "No value"}}</td>
             </tr>
             <tr>
                 <th>Mean</th>
-                <td>{{@column.mean}}</td>
+                <td>{{if @column.mean @column.mean "No value"}}</td>
             </tr>
             <tr>
                 <th>Median</th>
-                <td>{{@column.median}}</td>
+                <td>{{if @column.median @column.median "No value"}}</td>
             </tr>
             <tr>
                 <th>Common values (max. 5)</th>
                 <td>
-                    <table>
-                        <tr><th>Element</th><th>Value</th></tr>
-                        {{#each (json-parser @column.commonValues) as |row|}}
-                            <tr><td>{{row.element}}</td><td>{{calc-percentage row.occurrences}}%</td></tr>
-                        {{/each}}
-
-                    </table>
+                    {{#if @column.commonValues}}
+                        <table>
+                            <tr><th>Element</th><th>Value</th></tr>
+                            {{#each (json-parser @column.commonValues) as |row|}}
+                                <tr><td>{{row.element}}</td><td>{{calc-percentage row.occurrences}}%</td></tr>
+                            {{/each}}
+                        </table>
+                    {{else}}
+                        No value
+                    {{/if}}
                 </td>
             </tr>
             <tr>
@@ -129,6 +132,8 @@
             {{/if}}
         </table>
         
-        <img src="/files/{{@column.file.id}}/download" alt="Histogram">
+        {{#if @column.file}}
+            <img src="/files/{{@column.file.id}}/download" alt="">
+        {{/if}}
     </card.content>
 </PaperCard>
