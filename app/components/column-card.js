@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
+import { getOwner } from '@ember/application';
 
 export default class ColumnCardComponent extends Component {
     @service store;
@@ -54,7 +55,9 @@ export default class ColumnCardComponent extends Component {
         this.toggleEditColumn();
 
         if (reanalyse) {
-            await fetch(`/column/${this.selectedColumn.id}/reanalyse`, {method:"POST"});
+            let promise = fetch(`/column/${this.selectedColumn.id}/reanalyse`, {method:"POST"});
+            promise.then(getOwner(this).container.lookup("route:jobs/show/index").refresh());
+            
         }
     }
 }
